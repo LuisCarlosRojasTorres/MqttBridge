@@ -23,6 +23,15 @@ public class MetaFile
         }
     }
 
+    public MetaFile()
+    {
+        this.FileName = string.Empty;
+        this.Payload = null; 
+        this.HashMd5 = string.Empty;
+        this.NumOfTotalFiles = 1;
+        this.IndexOfFile = 1;
+    }
+
     public static string CalculateFileMD5(string filePath)
     {
         using (MD5 md5 = MD5.Create())

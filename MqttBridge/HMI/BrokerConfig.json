@@ -1,3 +1,4 @@
 {
-  "Port": 1883  
+  "Port": 1883,
+  "Topic": "AlarmTopic"  
 }
