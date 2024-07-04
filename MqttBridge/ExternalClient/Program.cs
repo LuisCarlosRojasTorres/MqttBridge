@@ -23,7 +23,8 @@ while (!cts.Token.IsCancellationRequested)
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                //Console.WriteLine(ex.ToString());
+                Console.WriteLine("Error in ExternalClient Connection");
             }
 
             break;
@@ -36,7 +37,8 @@ while (!cts.Token.IsCancellationRequested)
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                //Console.WriteLine(ex.ToString());
+                Console.WriteLine("Error in ExternalClient Publishing");
             }
             break;
 
@@ -48,7 +50,8 @@ while (!cts.Token.IsCancellationRequested)
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                //Console.WriteLine(ex.ToString());
+                Console.WriteLine("Error in ExternalClient Finishing");
             }
 
             break;

@@ -55,7 +55,8 @@ public class PitoMqttClient : IClientMqtt
         catch (Exception ex)
         {
             this.connectToPrimaryHMI = !this.connectToPrimaryHMI;
-            throw new Exception($"Error PitoMqttClient Connecting", ex);
+            //throw new Exception($"Error PitoMqttClient Connecting", ex);
+            throw new Exception($"Error PitoMqttClient Connecting");
         }
     }
     public void PublishFile()
@@ -76,7 +77,8 @@ public class PitoMqttClient : IClientMqtt
         catch (Exception ex)
         {
             this.connectToPrimaryHMI = !this.connectToPrimaryHMI;
-            throw new Exception($"Error PitoMqttClient Publishing", ex);
+            //throw new Exception($"Error PitoMqttClient Publishing", ex);
+            throw new Exception($"Error PitoMqttClient Publishing");
         }
     }
 

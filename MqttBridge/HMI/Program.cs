@@ -28,7 +28,8 @@ while (!cts.Token.IsCancellationRequested)
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                //Console.WriteLine(ex.ToString());
+                Console.WriteLine("Error in HmiMqttClient Connection");
             }
 
             break;
@@ -45,7 +46,8 @@ while (!cts.Token.IsCancellationRequested)
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                //Console.WriteLine(ex.ToString());
+                Console.WriteLine("Error in HmiMqttClient Publishing");
             }
             break;
 
@@ -58,6 +60,7 @@ while (!cts.Token.IsCancellationRequested)
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                Console.WriteLine("Error in HmiMqttClient Finishing");
             }
 
             break;

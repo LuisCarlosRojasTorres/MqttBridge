@@ -53,6 +53,7 @@ public class HmiMqttClient : IClientMqtt
         }
         catch (Exception ex)
         {
+            //throw new Exception($"HmiMqttClient Connecting", ex);
             throw new Exception($"HmiMqttClient Connecting");
         }
     }
@@ -73,7 +74,8 @@ public class HmiMqttClient : IClientMqtt
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error PitoMqttClient Publishing", ex);
+            //throw new Exception($"Error PitoMqttClient Publishing", ex);
+            throw new Exception($"Error PitoMqttClient Publishing");
         }
     }
 
