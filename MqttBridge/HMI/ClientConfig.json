@@ -1,0 +1,7 @@
+{
+  "Phmi_Ip": "1.1.1.160",
+  "Shmi_Ip": "1.1.1.142",
+  "Port": 1883,
+  "Topic": "FileTransfer",
+  "FileToTransfer": "./alarms.json"  
+}
