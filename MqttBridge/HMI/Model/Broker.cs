@@ -17,7 +17,7 @@ public class Broker
     private MqttServer mqttServer;
     public Action? AlarmReceivedCallback { get; set; }
     private string alarmPackageContent;
-    private string alarmPackageMD5;
+    private MetaFile alarmMetaFile;
 
     public Broker()
     { 
@@ -31,8 +31,9 @@ public class Broker
             this.brokerMqttOptions = JsonSerializer.Deserialize<BrokerMqttOptions>(file.ReadToEnd())!;
         }
 
-        this.alarmPackageContent = string.Empty;
-        this.alarmPackageMD5 = string.Empty;
+        this.alarmPackageContent = string.Empty;        
+        this.alarmMetaFile = new MetaFile();
+
         this.Run_Minimal_Server(this.brokerMqttOptions!).Wait();
     }
     public string GetLocalIPAddress()
@@ -73,9 +74,20 @@ public class Broker
                 {
                     this.alarmPackageContent = Encoding.UTF8.GetString(args.ApplicationMessage.PayloadSegment);
 
-                    MetaFile metaFile = JsonSerializer.Deserialize<MetaFile>(this.alarmPackageContent);
-                    this.alarmPackageMD5 = metaFile!.HashMd5!;
-                    this.AlarmReceivedCallback?.Invoke();
+                    MetaFile dummyMetaFile = JsonSerializer.Deserialize<MetaFile>(this.alarmPackageContent);
+
+                    if (alarmMetaFile.HashMd5 != dummyMetaFile!.HashMd5)
+                    {
+
+                        this.alarmMetaFile = dummyMetaFile;
+                        this.AlarmReceivedCallback?.Invoke();
+                        Console.WriteLine($"Broker: Received a NEW message with Topic: {this.brokerMqttOptions.Topic} and Hash: {this.alarmMetaFile.HashMd5}");
+                    }
+                    else 
+                    {
+                        Console.WriteLine($"Broker: Received a REPEATED message with Topic: {this.brokerMqttOptions.Topic} and Hash: {this.alarmMetaFile.HashMd5}");
+                    }
+                    
                 }
             }            
         }
